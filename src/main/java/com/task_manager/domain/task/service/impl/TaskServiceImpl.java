@@ -1,6 +1,9 @@
 package com.task_manager.domain.task.service.impl;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
 
 import com.task_manager.app.task.rest.request.TaskRequest;
 import com.task_manager.app.task.rest.response.TaskResponse;
@@ -14,6 +17,7 @@ import lombok.RequiredArgsConstructor;
  * TaskServiceImpl
  */
 @RequiredArgsConstructor
+@Service
 public class TaskServiceImpl implements TaskService {
 
   private final TaskRespository taskRespository;
@@ -32,8 +36,8 @@ public class TaskServiceImpl implements TaskService {
 
   @Override
   public TaskResponse show(Long id) {
-    // TODO Auto-generated method stub
-    return null;
+    return Task.aResponse(taskRespository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Task not found with id: " + id)));
   }
 
   @Override
