@@ -12,5 +12,6 @@ public record TaskRequest(
 
     String description,
     char priority,
+    boolean complete,
     LocalDate dueDate) {
 }

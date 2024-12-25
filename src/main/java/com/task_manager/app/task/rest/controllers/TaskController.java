@@ -16,6 +16,7 @@ import com.task_manager.app.task.rest.response.TaskResponse;
 import com.task_manager.domain.task.service.TaskService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PutMapping;
 
 /**
  * TaskController
@@ -41,6 +42,11 @@ public class TaskController {
   public ResponseEntity<TaskResponse> create(@RequestBody TaskRequest task) {
 
     return ResponseEntity.status(HttpStatus.CREATED).body(taskService.create(task));
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<TaskResponse> update(@PathVariable Long id, @RequestBody TaskRequest task) {
+    return ResponseEntity.status(HttpStatus.OK).body(taskService.update(id, task));
   }
 
 }

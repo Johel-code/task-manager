@@ -1,6 +1,5 @@
 package com.task_manager.domain.task.service.impl;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -38,8 +37,16 @@ public class TaskServiceImpl implements TaskService {
 
   @Override
   public TaskResponse update(Long id, TaskRequest request) {
-    // TODO Auto-generated method stub
-    return null;
+    Task task = taskRespository.findById(id)
+        .orElseThrow(() -> new TaskNotFoundException());
+    task.setName(request.name());
+    task.setDescription(request.description());
+    task.setDueDate(request.dueDate());
+    task.setComplete(request.complete());
+    task.setPriority(request.priority());
+    task.setUpdateDate(LocalDateTime.now());
+
+    return Task.aResponse(taskRespository.save(task));
   }
 
   @Override
