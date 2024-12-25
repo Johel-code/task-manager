@@ -1,5 +1,7 @@
 package com.task_manager.domain.task.service.impl;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -24,8 +26,14 @@ public class TaskServiceImpl implements TaskService {
 
   @Override
   public TaskResponse create(TaskRequest request) {
-    // TODO Auto-generated method stub
-    return null;
+    Task task = taskRespository.save(Task.builder()
+        .name(request.name())
+        .description(request.description())
+        .complete(false)
+        .dueDate(request.dueDate())
+        .priority(request.priority())
+        .build());
+    return Task.aResponse(task);
   }
 
   @Override
