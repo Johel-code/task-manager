@@ -1,12 +1,12 @@
 package com.task_manager.domain.task.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.task_manager.app.task.rest.request.TaskRequest;
 import com.task_manager.app.task.rest.response.TaskResponse;
+import com.task_manager.common.exceptions.TaskNotFoundException;
 import com.task_manager.domain.task.models.Task;
 import com.task_manager.domain.task.respository.TaskRespository;
 import com.task_manager.domain.task.service.TaskService;
@@ -37,7 +37,7 @@ public class TaskServiceImpl implements TaskService {
   @Override
   public TaskResponse show(Long id) {
     return Task.aResponse(taskRespository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Task not found with id: " + id)));
+        .orElseThrow(() -> new TaskNotFoundException()));
   }
 
   @Override
