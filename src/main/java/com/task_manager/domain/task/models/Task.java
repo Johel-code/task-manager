@@ -1,5 +1,6 @@
 package com.task_manager.domain.task.models;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.task_manager.app.task.rest.response.TaskResponse;
@@ -31,7 +32,7 @@ public class Task extends BaseModel {
   private char priority;
 
   @Column(name = "due_date")
-  private LocalDateTime dueDate;
+  private LocalDate dueDate;
 
   public static TaskResponse aResponse(Task a) {
     return new TaskResponse(a.getId(), a.getName(), a.getDescription(), a.isComplete(), a.getPriority(),

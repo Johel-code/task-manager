@@ -1,6 +1,6 @@
 package com.task_manager.app.task.rest.response;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * TaskResponse
@@ -11,6 +11,6 @@ public record TaskResponse(
     String description,
     boolean complete,
     char priority,
-    LocalDateTime dueDate) {
+    LocalDate dueDate) {
 
 }

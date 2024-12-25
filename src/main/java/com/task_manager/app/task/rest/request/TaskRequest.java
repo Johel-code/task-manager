@@ -1,5 +1,7 @@
 package com.task_manager.app.task.rest.request;
 
+import java.time.LocalDate;
+
 import jakarta.validation.constraints.NotBlank;
 
 /**
@@ -9,7 +11,6 @@ public record TaskRequest(
     @NotBlank String name,
 
     String description,
-    boolean complete,
     char priority,
-    String dueDAte) {
+    LocalDate dueDate) {
 }
