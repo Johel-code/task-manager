@@ -54,7 +54,7 @@ public class GlobalExceptionHandler {
   // .collect(Collectors.toList());
   //
   // return buildResponseEntity(
-  // new CustomErrorResponse("02", ex.getMessage(), HttpStatus.BAD_REQUEST));
+  // new CustomErrorResponse("02", "Validation failed", HttpStatus.BAD_REQUEST));
   // }
 
   @ExceptionHandler(MissingRequestHeaderException.class) // Cabecera es requerido
