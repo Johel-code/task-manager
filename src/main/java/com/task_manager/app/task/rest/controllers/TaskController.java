@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import com.task_manager.app.task.rest.request.TaskRequest;
 import com.task_manager.app.task.rest.response.TaskResponse;
 import com.task_manager.domain.task.service.TaskService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -39,7 +41,7 @@ public class TaskController {
   }
 
   @PostMapping
-  public ResponseEntity<TaskResponse> create(@RequestBody TaskRequest task) {
+  public ResponseEntity<TaskResponse> create(@Valid @RequestBody TaskRequest task) {
 
     return ResponseEntity.status(HttpStatus.CREATED).body(taskService.create(task));
   }
@@ -47,6 +49,11 @@ public class TaskController {
   @PutMapping("/{id}")
   public ResponseEntity<TaskResponse> update(@PathVariable Long id, @RequestBody TaskRequest task) {
     return ResponseEntity.status(HttpStatus.OK).body(taskService.update(id, task));
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<TaskResponse> delete(@PathVariable Long id) {
+    return ResponseEntity.status(HttpStatus.OK).body(taskService.delete(id));
   }
 
 }

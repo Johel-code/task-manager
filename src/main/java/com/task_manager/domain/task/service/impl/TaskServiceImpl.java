@@ -63,8 +63,10 @@ public class TaskServiceImpl implements TaskService {
 
   @Override
   public TaskResponse delete(Long id) {
-    // TODO Auto-generated method stub
-    return null;
+    Task task = taskRespository.findById(id)
+        .orElseThrow(() -> new TaskNotFoundException());
+    taskRespository.delete(task);
+    return Task.aResponse(task);
   }
 
 }
