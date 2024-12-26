@@ -13,10 +13,10 @@ import lombok.Getter;
 public enum ErrorMsg {
 
   TASK_NOT_FOUND("001", "Task not found", HttpStatus.NOT_FOUND),
-  INVALID_REQUEST("001", "Task not found", HttpStatus.NOT_FOUND),
-  INTERNAL_ERROR("001", "Task not found", HttpStatus.NOT_FOUND),
-  JSON_PROCESING("001", "Task not found", HttpStatus.NOT_FOUND),
-  FORBIDDEN("001", "Task not found", HttpStatus.NOT_FOUND);
+  INVALID_REQUEST("002", "Invalid request", HttpStatus.BAD_REQUEST),
+  INTERNAL_ERROR("003", "Internal error", HttpStatus.INTERNAL_SERVER_ERROR),
+  JSON_PROCESING("004", "Error al procesar json", HttpStatus.NOT_FOUND),
+  FORBIDDEN("005", "Acceso denegado", HttpStatus.FORBIDDEN);
 
   private final String errorCode;
   private final String message;

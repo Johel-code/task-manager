@@ -2,16 +2,19 @@ package com.task_manager.app.task.rest.request;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 
 /**
  * TaskRequest
  */
 public record TaskRequest(
-    @NotBlank String name,
+    @NotBlank(message = "El nombre no debe estar en blanco") String name,
 
     String description,
+
     char priority,
     boolean complete,
-    LocalDate dueDate) {
+
+    @FutureOrPresent LocalDate dueDate) {
 }
